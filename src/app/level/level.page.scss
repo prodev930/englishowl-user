@@ -1,0 +1,41 @@
+#container {
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .selectLevel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+    font-family: "Mohave";
+    font-style: normal;
+    font-size: 2em;
+    line-height: 5vh;
+    color: #ffffff;
+  }
+
+  .swiper {
+    width: 50%;
+    height: 90vw;
+    background-color: rgb(61, 80, 80);
+    // border-radius: 0px;
+  }
+
+  .level {
+    font-size: 10vw;
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(164.21deg, #05ECC2 -1.92%, rgba(4, 121, 100, 0.25) 128.62%);
+    box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.15), 10px 10px 20px #2E3033;
+    border-radius: 10px;
+  }
+}

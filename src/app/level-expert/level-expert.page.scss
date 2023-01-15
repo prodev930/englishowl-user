@@ -1,0 +1,160 @@
+#container {
+    // background-color: #1a1b1d;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+    .toolbar {
+      height: 12vh;
+      background: #1a1b1b;
+      box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2),
+        0 10px 40px 0 rgba(0, 0, 0, 0.19);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+  
+    }
+  
+    .title {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      font-family: "Mohave";
+      font-size: 3.3em;
+      color: #ffffff;
+    }
+  
+    .section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: -7vw;
+  
+      .selectChapter {
+        height: 85vh;
+        overflow: auto;
+        display: flex;
+        width: 70%;
+        margin-left: 0vw;
+  
+        .chapterbtn-group {
+          margin-left: 7vw;
+        }
+      }
+  
+      .selectLevel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: right;
+        padding: 25px;
+        padding-top: 7vh;
+        width: 20px;
+        height: 20vh;
+        margin-left: 5vw;
+        background: linear-gradient(rgba(44, 46, 51, 0) -0.9%, #05ecc2 102.48%);
+        filter: drop-shadow(-20px -20px 40px #2f3134) drop-shadow(20px 20px 40px rgba(255, 255, 255, 0.25));
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2),
+          0 5px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 10px;
+  
+        .rookie {
+          font-size: 1.5em;
+          justify-content: center;
+          margin-top: 2vh;
+          display: flex;
+          align-items: center;
+          color: white;
+          letter-spacing: 3px;
+          bottom: 0;
+          left: 0;
+          transform: rotate(270deg);
+          transform-origin: 0 0;
+          margin-left: -3.5vw;
+        }
+      }
+    }
+  
+    .chapterbtn {
+      width: 55vw;
+      height: 7vh;
+      background: linear-gradient(98.17deg,
+          #2c2e33 -0.7%,
+          rgba(44, 46, 51, 0) 102.48%);
+      // filter: drop-shadow(-10px -10px 20px rgba(255, 250, 250, 0.25))
+      //   drop-shadow(20px 20px 40px #2f3134);
+      box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2),
+        10px 10px 40px 0 rgba(0, 0, 0, 0.19);
+      border-radius: 10px;
+  
+      border-radius: 10px;
+      text-align: center;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+  
+      .chapter {
+        display: flex;
+        flex-direction: row;
+        --background: none;
+        justify-content: space-between;
+        align-items: center;
+  
+        .chapterTxt {
+          color: white;
+          font-size: 8vw;
+          margin-left: 5vw;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: left;
+          align-items: center;
+        }
+  
+  
+        .key {
+          width: 6.5vw;
+          height: 7vw;
+          display: flex;
+          justify-content: right;
+          margin-left: 7vw;
+        }
+      }
+    }
+  
+    .chapterbtn:hover {
+      color: #000000;
+      background-image: linear-gradient(to right,
+          #05ecc2 6.14%,
+          rgba(2, 53, 44, 0.25) 90.6%);
+      box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2),
+        0 10px 20px 0 rgba(0, 0, 0, 0.19);
+  
+      border-radius: 10px;
+  
+      .chapter {
+        .key {
+          content: url("../../assets/img/lock-black.png");
+          width: 7vw;
+          height: 7vw;
+        }
+        .chapterTxt {
+          color: black;
+        }
+      }
+  
+      
+    }
+  
+    .chapterbtn:active {
+      color: white;
+      background: #202224;
+      box-shadow: inset -10px -10px 20px rgba(255, 255, 255, 0.25),
+        inset 10px 10px 20px #000000;
+      border-radius: 10px;
+    }
+  }

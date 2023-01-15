@@ -1,0 +1,103 @@
+#container {
+    overflow: auto;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    // gap: 5vh;
+
+    .toolbar {
+        height: 15vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .context {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24.5vh;
+
+        .content {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 2vh;
+
+            .content1 {
+                font-size: 13vw;
+
+            }
+
+            .content2 {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0 15px 0 15px;
+                gap: 15px;
+                font-size: 6vw;
+            }
+
+            .section {
+                display: flex;
+                flex-direction: column;
+                gap: 8vh;
+            }
+
+            .discription {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-size: 4vw;
+            }
+        }
+
+        .footer {
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 3.5vh;
+
+            .mark {
+                width: 70vw;
+                font-size: 5vw;
+                color: white;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding: 25px;
+                background: #202224;
+                box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.25), 10px 10px 20px #000000;
+                border-radius: 10px;
+            }
+
+            .modal {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .arrow {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    gap: 124px;
+                    margin-top: 5.0777vh;
+
+                    .outHome{
+                        margin-top: -4.49999vh;
+                    }
+                }
+            }
+        }
+    }
+}

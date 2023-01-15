@@ -1,0 +1,39 @@
+<div id="container">
+  <div>
+    <div class="loginTxt">Register</div>
+    <div class="logogif" style="position: relative;">
+      <ion-img class="logo" src="../../assets/img/EnglishOwlLogo[component_svg].png"></ion-img>
+      <div class="bird">
+        <ion-img class="img" src="../../assets/img/0.gif"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="buttomcard">
+    <div class="second">
+      <div class="InptTxt">
+        <div class="input">
+          <ion-item class="emailEnter">
+            <img class="email" src="../../assets/img/mail.png" alt="" />
+            <ion-input class="emailPlace" placeholder="Enter Email..." #email required></ion-input>
+          </ion-item>
+        </div>
+        <div class="BtnLog">
+          <div class="input">
+            <ion-item class="passEnter">
+              <img class="key" src="../../assets/img/Lock_-Grey.png" alt="" />
+              <ion-input class="passplace" type="password" placeholder="Password..." #password required></ion-input>
+            </ion-item>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="BtnLog">
+          <div class="input" type="submit" (click)="signUp(email, password)" expand="block">Sign Up</div>
+          <div class="readyAccount">
+            Already have an account? <a [routerLink]="'/signin'">Sign in here.</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

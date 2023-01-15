@@ -1,0 +1,60 @@
+<div id="container">
+  <div class="toolbar">
+    <div><a [routerLink]="'/level'">
+        <img class="left" src="../../assets/img/Left Top Circle Button.png" alt="" />
+      </a>
+    </div>
+    <div>
+      <img class="right" src="../../assets/img/Right Top Circle Button.png" alt="" />
+    </div>
+  </div>
+  <div class="context">
+    <div class="content">
+      <div class="content1">Chapter1</div>
+      <div class="section">
+        <div class="content2">Warming Up With Essential Grammatical Terms</div>
+        <div class="discription">
+          <div class="list row">
+
+            <div>
+              <!-- <h4>Tutorials List</h4> -->
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let tutorial of tutorials; let i = index"
+                  [class.active]="i == currentIndex" (click)="setActiveTutorial(tutorial, i)">
+                  {{ tutorial.title }}
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div *ngIf="currentTutorial">
+                <app-tutorial-details (refreshList)="refreshList()" [tutorial]="currentTutorial"></app-tutorial-details>
+              </div>
+              <div *ngIf="!currentTutorial">
+                <br />
+                <!-- <p>Please click on a Tutorial...</p> -->
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="mark">Mark As Done</div>
+      <div class="modal">
+
+        <ion-img src="../../assets/img/Modal.png" alt=""></ion-img>
+        <div class="arrow">
+          <a [routerLink]="'/currentlevel'">
+            <ion-img src="../../assets/img/modal-arrow-left.png"></ion-img>
+          </a>
+          <img class="outHome" src="../../assets/img/Vector (2).png">
+          <a [routerLink]="'/quize'">
+            <ion-img src="../../assets/img/modal-arrow-right.png"></ion-img>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

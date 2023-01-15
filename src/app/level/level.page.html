@@ -1,0 +1,9 @@
+<div id="container">
+  <div class="selectLevel">Select Your Level</div>
+  <swiper [spaceBetween]="30" [centeredSlides]="true" class="mySwiper">
+    <ng-template swiperSlide class="level"><a [routerLink]="'/level-rookie'" class="level">Rookie</a></ng-template>
+    <ng-template swiperSlide class="level"><a [routerLink]="'/level-warrior'" class="level">Warrior</a></ng-template>
+    <ng-template swiperSlide class="level"><a [routerLink]="'/level-slayer'" class="level">Slayer</a></ng-template>
+    <ng-template swiperSlide class="level"><a [routerLink]="'/level-expert'" class="level">Expert</a></ng-template>
+  </swiper>
+</div>

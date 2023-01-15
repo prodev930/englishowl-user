@@ -1,0 +1,52 @@
+<div id="container">
+  <div>
+    <div class="toolbar">
+      <div>
+        <img
+          class="left"
+          src="../../assets/img/Left Top Circle Button.png"
+          alt=""
+        />
+      </div>
+      <div>
+        <img
+          class="right"
+          src="../../assets/img/Right Top Circle Button.png"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div>
+      <main>
+        <div>
+          <swiper
+            class="slide"
+            [slidesPerView]="3"
+            [spaceBetween]="50"
+            (swiper)="setThumbsSwiper($event)"
+            [navigation]="{}"
+            [pagination]="{ clickable: true }"
+            [scrollbar]="{ draggable: true }"
+            [watchSlidesProgress]="true"
+          >
+            <ng-template swiperSlide> </ng-template>
+            <ng-template class="slideCard" swiperSlide
+              ><div class="slideCard">Rookie</div></ng-template
+            >
+            <ng-template class="slideCard" swiperSlide
+              ><div class="slideCard">Warrior</div></ng-template
+            >
+            <ng-template class="slideCard" swiperSlide
+              ><div class="slideCard">Slayer</div></ng-template
+            >
+            <ng-template class="slideCard" swiperSlide
+              ><div class="slideCard">Expert</div></ng-template
+            >
+            <ng-template swiperSlide> </ng-template>
+          </swiper>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,210 @@
+* {
+  user-select: none;
+}
+
+#container {
+  background-color: #2d2e2e;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
+
+  .bird {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    top: 0;
+
+    .img {
+      width: 59%;
+    }
+  }
+
+  .buttomcard {
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    background: #46484b;
+  }
+
+  .buttomcard:hover {
+    background-color: #202224;
+  }
+
+  .logogif {
+    margin-top: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo {
+    width: 75%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0%;
+    gap: 0px;
+  }
+
+  .loginTxt {
+    padding-top: 15%;
+    font-family: "Mohave";
+    font-style: normal;
+    font-size: 50px;
+    color: #ffffff;
+  }
+
+  .second {
+    height: 42vhs;
+    padding: 60px 56px;
+    display: flex;
+    flex-direction: column;
+
+    .InptTxt {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .input {
+        height: 45px;
+
+        .emailEnter {
+          display: flex;
+          flex-direction: row;
+          --background: none;
+          --inner-border-width: none;
+          --border-style: none;
+          justify-content: space-between;
+          align-items: center;
+
+          .email {
+            width: 12%;
+            height: 60%;
+          }
+
+          .emailPlace {
+            margin-left: 10px;
+            color: white;
+            --placeholder-color: white;
+          }
+
+          .emailPlace:hover {
+            --placeholder-color: rgb(31, 31, 31);
+          }
+        }
+      }
+
+      .input:hover {
+        background: linear-gradient(94.48deg,
+            #05ecc2 -6.14%,
+            rgba(4, 121, 100, 0.25) 109.6%);
+        box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.25),
+          10px 10px 20px #000000;
+        border-radius: 10px;
+      }
+
+      .input:active {
+        background: #202224;
+        box-shadow: inset -10px -10px 20px rgba(255, 255, 255, 0.25),
+          inset 10px 10px 20px #000000;
+        border-radius: 10px;
+      }
+    }
+
+    .BtnLog {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .input {
+        height: 45px;
+
+        .passEnter {
+          display: flex;
+          flex-direction: row;
+          --background: none;
+          --inner-border-width: none;
+          --border-style: none;
+          --background: none;
+          justify-content: space-between;
+          align-items: center;
+
+          .key {
+            width: 12%;
+            height: 60%;
+          }
+
+          .passplace {
+            margin-left: 10px;
+            color: white;
+            --placeholder-color: white;
+          }
+
+          .passplace:hover {
+            // margin-left: 10vw;
+            --placeholder-color: rgb(27, 27, 27);
+          }
+        }
+      }
+
+      .input:hover {
+        background: linear-gradient(94.48deg,
+            #05ecc2 -6.14%,
+            rgba(4, 121, 100, 0.25) 109.6%);
+        box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.25),
+          10px 10px 20px #000000;
+        border-radius: 10px;
+      }
+
+      .input:active {
+        background: #202224;
+        box-shadow: inset -10px -10px 20px rgba(255, 255, 255, 0.25),
+          inset 10px 10px 20px #000000;
+        border-radius: 10px;
+      }
+
+      .forgotPass {
+        color: white;
+      }
+
+      .notAccount {
+        color: white;
+      }
+    }
+  }
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+.input {
+  color: white;
+  background: #202224;
+  box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.25), 10px 10px 20px #000000;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
