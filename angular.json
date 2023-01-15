@@ -98,9 +98,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "styles": [],
-            "scripts": [ 
-              "./node_modules/jquery/dist/jquery.min.js"
-             ],
+            "scripts": [],
             "assets": [
               {
                 "glob": "favicon.ico",
