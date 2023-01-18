@@ -1,4 +1,5 @@
 #container {
+    user-select: none;
     overflow: auto;
     text-align: center;
     height: 100%;
@@ -18,7 +19,6 @@
     .context {
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
         gap: 24.5vh;
 
@@ -26,7 +26,7 @@
             color: white;
             display: flex;
             flex-direction: column;
-            gap: 2vh;
+            gap: 8vh;
 
             .content1 {
                 font-size: 13vw;
@@ -46,15 +46,94 @@
             .section {
                 display: flex;
                 flex-direction: column;
-                gap: 8vh;
+
+                .quiz_content {
+                    display: flex;
+                    margin-left: 3vw;
+                    width: 70vw;
+                    text-align: left;
+                    font-family:'Mohave';
+                    letter-spcing:3px;
+                    font-size:6vw
+                }
             }
 
             .discription {
+                margin-left: 7vw;
                 display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
                 font-size: 4vw;
+
+                .problemCheck {
+                    display: flex;
+                    width: 70vw;
+                    margin-left: 5vw;
+                    position: relative;
+                    padding-left: 35px;
+                    margin-bottom: 12px;
+                    cursor: pointer;
+                    font-size: 22px;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                }
+
+                /* Hide the browser's default checkbox */
+                .problemCheck input {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                    height: 0;
+                    width: 0;
+                }
+
+                /* Create a custom checkbox */
+                .checkmark {
+                    display: flex;
+                    border-radius: 20px;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 25px;
+                    width: 25px;
+                    background-color: #eee;
+                }
+
+                /* On mouse-over, add a grey background color */
+                .problemCheck:hover input~.checkmark {
+                    background-color: #ccc;
+                }
+
+                /* When the checkbox is checked, add a blue background */
+                .problemCheck input:checked~.checkmark {
+                    background-color: #05ECC2
+                    ;
+                }
+
+                /* Create the checkmark/indicator (hidden when not checked) */
+                .checkmark:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                }
+
+                /* Show the checkmark when checked */
+                .problemCheck input:checked~.checkmark:after {
+                    display: block;
+                }
+
+                /* Style the checkmark/indicator */
+                .problemCheck .checkmark:after {
+                    left: 9px;
+                    top: 5px;
+                    width: 5px;
+                    height: 10px;
+                    // border: solid white;
+                    border-width: 0 3px 3px 0;
+                    -webkit-transform: rotate(45deg);
+                    -ms-transform: rotate(45deg);
+                    transform: rotate(45deg);
+                }
             }
         }
 
@@ -93,11 +172,12 @@
                     gap: 124px;
                     margin-top: 5.0777vh;
 
-                    .outHome{
+                    .outHome {
                         margin-top: -4.49999vh;
                     }
                 }
             }
         }
     }
+
 }

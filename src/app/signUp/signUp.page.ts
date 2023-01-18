@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthenticationService } from '../shared/authentication-service';
+import { User } from 'src/app/models/user.model';
+import { UserService } from 'src/app/services/user.service';
+import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-signUp',
@@ -8,23 +10,47 @@ import { AuthenticationService } from '../shared/authentication-service';
   styleUrls: ['signUp.page.scss'],
 })
 export class signUpComponent {
-  constructor(
-    public authService: AuthenticationService,
-    public router: Router
-  ) { }
-  
-  ngOnInit() { }
+  // user?: User[];
+  user: User = new User();
+  submitted = false;
+  public userData;
 
-  signUp(email, password) {
-    this.authService
-      .RegisterUser(email.value, password.value)
-      .then((res) => {
-        this.authService.SendVerificationMail();
-        alert("Register success");
-        this.router.navigate(['signin']);
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
+  constructor(private UserService: UserService) { }
+
+  refreshList(): void {
+    this.retrieveTutorials();
+  }
+  retrieveTutorials(): void {
+    this.UserService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ id: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      console.log("dsafadsf", data);
+      this.userData = data;
+    });
+  }
+
+  signUp(): void {
+    for (var i = 0; i < this.userData.length; i++) {
+      if (this.userData[i].email == this.user.email) {
+        alert("Already email");
+        break;
+      }
+      // else {
+      //   alert('Created new item successfully!');
+      //   this.UserService.create(this.user).then(() => {
+      //   });
+      // }
+    }
+    this.UserService.create(this.user).then(() => {
+    });
+
+  }
+
+  ngOnInit(): void {
+    this.retrieveTutorials();
   }
 }

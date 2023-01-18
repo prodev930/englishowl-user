@@ -30,7 +30,10 @@ export class AuthenticationService {
         JSON.parse(localStorage.getItem('user'));
       }
     });
+
   }
+
+
 
   // Login in with email/password
   SignIn(email, password) {

@@ -22,36 +22,36 @@ import { ChapterPage } from './chapter.page';
 })
 export class ChapterPageModule {
 
-  tutorials?: Tutorial[];
-  currentTutorial?: Tutorial;
-  currentIndex = -1;
-  title = '';
+  // tutorials?: Tutorial[];
+  // currentTutorial?: Tutorial;
+  // currentIndex = -1;
+  // title = '';
 
-  constructor(private tutorialService: TutorialService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.retrieveTutorials();
+    // this.retrieveTutorials();
   }
-  refreshList(): void {
-    this.currentTutorial = undefined;
-    this.currentIndex = -1;
-    this.retrieveTutorials();
-  }
+  // refreshList(): void {
+  //   this.currentTutorial = undefined;
+  //   this.currentIndex = -1;
+  //   this.retrieveTutorials();
+  // }
 
-  retrieveTutorials(): void {
-    this.tutorialService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-        )
-      )
-    ).subscribe(data => {
-      this.tutorials = data;
-    });
-  }
+  // retrieveTutorials(): void {
+  //   this.tutorialService.getAll().snapshotChanges().pipe(
+  //     map(changes =>
+  //       changes.map(c =>
+  //         ({ id: c.payload.doc.id, ...c.payload.doc.data() })
+  //       )
+  //     )
+  //   ).subscribe(data => {
+  //     this.tutorials = data;
+  //   });
+  // }
 
-  setActiveTutorial(tutorial: Tutorial, index: number): void {
-    this.currentTutorial = tutorial;
-    this.currentIndex = index;
-  }
+  // setActiveTutorial(tutorial: Tutorial, index: number): void {
+  //   this.currentTutorial = tutorial;
+  //   this.currentIndex = index;
+  // }
 }

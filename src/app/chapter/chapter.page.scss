@@ -46,15 +46,13 @@
             .section {
                 display: flex;
                 flex-direction: column;
-                gap: 8vh;
+                gap: 2vh;
             }
 
             .discription {
                 display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                font-size: 4vw;
+                text-align: left;
+                // font-size: 4vw;
             }
         }
 
@@ -66,6 +64,7 @@
             gap: 3.5vh;
 
             .mark {
+                text-decoration: none;
                 width: 70vw;
                 font-size: 5vw;
                 color: white;

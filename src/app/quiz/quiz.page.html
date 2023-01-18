@@ -10,15 +10,64 @@
   </div>
   <div class="context">
     <div class="content">
-      <div class="content1">Quiz1</div>
+      <div class="content1">Quiz 1</div>
       <div class="section">
-        <!-- <div class="content2">Warming Up With Essential Grammatical Terms</div> -->
+        <div>
+          <div style="overflow: auto;">
+            <div class="">
+              <ul class="" style="list-style-type: none;">
+                <li class="quiz_content"  *ngFor="let tutorial of tutorials; let i = index"
+                  [class.active]="i == currentIndex" (click)="setActiveTutorial(tutorial, i)">
+                  <span style="font-size: 5vw;">Q1.</span> <div style="margin-left: 5vw;">{{ tutorial.question }}</div> 
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <div *ngIf="currentTutorial">
+                <app-tutorial-details (refreshList)="refreshList()" [tutorial]="currentTutorial"></app-tutorial-details>
+              </div>
+           
+            </div>
+          </div>
+        </div>
         <div class="discription">
-          <div>**Description Goes Here</div>
-          <div>**Description Goes Here</div>
+
+
+
+
+
+          <ul style="list-style-type: none;">
+            <li>
+              <label class="problemCheck">is
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </li>
+            <li>
+              <label class="problemCheck">are
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </li>
+            <li>
+              <label class="problemCheck">am
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </li>
+            <li>
+              <label class="problemCheck">will
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        
+        
+
         </div>
       </div>
     </div>
-  
+
   </div>
 </div>

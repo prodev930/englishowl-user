@@ -14,47 +14,44 @@
       <div class="section">
         <div class="content2">Warming Up With Essential Grammatical Terms</div>
         <div class="discription">
-          <div class="list row">
-
-            <div>
-              <!-- <h4>Tutorials List</h4> -->
-              <ul class="list-group">
-                <li class="list-group-item" *ngFor="let tutorial of tutorials; let i = index"
-                  [class.active]="i == currentIndex" (click)="setActiveTutorial(tutorial, i)">
-                  {{ tutorial.title }}
-                </li>
+          <div style="height: 34.9vh; overflow: auto;">
+            <div class="">
+              <ul class="" style="list-style-type: none;">
+                <li class="chapter_content" style="width: 80vw; font-size: 5vw;" *ngFor="let tutorial of tutorials; let i = index"
+                  [class.active]="i == currentIndex" (click)="setActiveTutorial(tutorial, i)" [innerHTML] = "html">
+                </li> 
               </ul>
             </div>
-            <div>
+            <div class="col-md-6">
               <div *ngIf="currentTutorial">
                 <app-tutorial-details (refreshList)="refreshList()" [tutorial]="currentTutorial"></app-tutorial-details>
               </div>
-              <div *ngIf="!currentTutorial">
-                <br />
-                <!-- <p>Please click on a Tutorial...</p> -->
-              </div>
+
+              <!-- <div *ngIf="!currentTutorial">
+                  <br />
+                  <p>There's not problem...</p>
+                </div> -->
             </div>
           </div>
-
-
         </div>
       </div>
-    </div>
-    <div class="footer">
-      <div class="mark">Mark As Done</div>
-      <div class="modal">
+      <div class="footer">
+        <a [routerLink]="'/quiz'"class="routerlink">
+          <div class="mark" >Mark As Done</div>
+        </a>
+        <div class="modal">
 
-        <ion-img src="../../assets/img/Modal.png" alt=""></ion-img>
-        <div class="arrow">
-          <a [routerLink]="'/currentlevel'">
-            <ion-img src="../../assets/img/modal-arrow-left.png"></ion-img>
-          </a>
-          <img class="outHome" src="../../assets/img/Vector (2).png">
-          <a [routerLink]="'/quize'">
-            <ion-img src="../../assets/img/modal-arrow-right.png"></ion-img>
-          </a>
+          <ion-img src="../../assets/img/Modal.png" alt=""></ion-img>
+          <div class="arrow">
+            <a [routerLink]="'/level'">
+              <ion-img src="../../assets/img/modal-arrow-left.png"></ion-img>
+            </a>
+            <img class="outHome" src="../../assets/img/Vector (2).png">
+            <a [routerLink]="'/quiz'">
+              <ion-img src="../../assets/img/modal-arrow-right.png"></ion-img>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>

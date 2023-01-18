@@ -14,21 +14,23 @@
         <div class="input">
           <ion-item class="emailEnter">
             <img class="email" src="../../assets/img/mail.png" alt="" />
-            <ion-input class="emailPlace" placeholder="Enter Email..." #email required></ion-input>
+            <ion-input class="emailPlace" placeholder="Enter Email..." id="email" required [(ngModel)]="user.email"
+              name="email"></ion-input>
           </ion-item>
         </div>
         <div class="BtnLog">
           <div class="input">
             <ion-item class="passEnter">
               <img class="key" src="../../assets/img/Lock_-Grey.png" alt="" />
-              <ion-input class="passplace" type="password" placeholder="Password..." #password required></ion-input>
+              <ion-input class="passplace" type="password" placeholder="Password..." required
+                [(ngModel)]="user.password" name="password"></ion-input>
             </ion-item>
           </div>
           <div></div>
         </div>
 
         <div class="BtnLog">
-          <div class="input" type="submit" (click)="signUp(email, password)" expand="block">Sign Up</div>
+          <div class="input" type="submit"  (click)="signUp()" expand="block">Sign Up</div>
           <div class="readyAccount">
             Already have an account? <a [routerLink]="'/signin'">Sign in here.</a>
           </div>

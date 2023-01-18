@@ -4,7 +4,15 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
+
+// import { RouterModule, Routes } from '@angular/router';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+// import { CardSnippetModule } from 'src/@core/components/card-snippet/card-snippet.module';
+// import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 import { QuizPageRoutingModule } from './quiz-routing.module';
+
 
 import { QuizPage } from './quiz.page';
 
@@ -13,8 +21,13 @@ import { QuizPage } from './quiz.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    QuizPageRoutingModule
+    QuizPageRoutingModule,
+    NgbModule,
+    // ContentHeaderModule,
+    // CardSnippetModule
   ],
   declarations: [QuizPage]
 })
-export class QuizPageModule {}
+export class QuizPageModule { }
+
+
