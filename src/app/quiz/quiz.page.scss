@@ -52,10 +52,40 @@
                     margin-left: 3vw;
                     width: 70vw;
                     text-align: left;
-                    font-family:'Mohave';
-                    letter-spcing:3px;
-                    font-size:6vw
+                    font-family: 'Mohave';
+                    letter-spcing: 3px;
+                    font-size: 6vw
                 }
+
+                .test_btn {
+
+                    display: flex;
+                    flex-direction: row;
+                    gap: 30vw;
+                    justify-content: center;
+                    align-items: center;
+
+                    .confirm {
+                        font-size: 5vw;
+                        color: rgb(255, 255, 255);
+                        width: 20vw;
+                        height: 5vh;
+                        background: linear-gradient(93.98deg, #05ECC2 -3.37%, rgba(4, 121, 100, 0.25) 109.33%);
+                        box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.25), 10px 10px 20px #000000;
+                        border-radius: 10px;
+                    }
+
+                    .next {
+                        font-size: 6vw;
+                        color: rgb(255, 255, 255);
+                        width: 20vw;
+                        height: 5vh;
+                        background: linear-gradient(93.98deg, #05ECC2 -3.37%, rgba(4, 121, 100, 0.25) 109.33%);
+                        box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.25), 10px 10px 20px #000000;
+                        border-radius: 10px;
+                    }
+                }
+
             }
 
             .discription {
@@ -65,7 +95,7 @@
 
                 .problemCheck {
                     display: flex;
-                    width: 70vw;
+                    width: 55vw;
                     margin-left: 5vw;
                     position: relative;
                     padding-left: 35px;
@@ -106,8 +136,7 @@
 
                 /* When the checkbox is checked, add a blue background */
                 .problemCheck input:checked~.checkmark {
-                    background-color: #05ECC2
-                    ;
+                    background-color: #05ECC2;
                 }
 
                 /* Create the checkmark/indicator (hidden when not checked) */
@@ -179,5 +208,6 @@
             }
         }
     }
+
 
 }

@@ -17,26 +17,21 @@
           <div style="height: 34.9vh; overflow: auto;">
             <div class="">
               <ul class="" style="list-style-type: none;">
-                <li class="chapter_content" style="width: 80vw; font-size: 5vw;" [innerHTML] = "html">
-                </li> 
+                <li class="chapter_content" style="width: 80vw; font-size: 5vw;" [innerHTML]="html">
+                </li>
               </ul>
             </div>
             <div class="col-md-6">
               <div *ngIf="currentTutorial">
                 <app-tutorial-details (refreshList)="refreshList()" [tutorial]="currentTutorial"></app-tutorial-details>
               </div>
-
-              <!-- <div *ngIf="!currentTutorial">
-                  <br />
-                  <p>There's not problem...</p>
-                </div> -->
             </div>
           </div>
         </div>
       </div>
       <div class="footer">
-        <a [routerLink]="'/quiz'"class="routerlink">
-          <div class="mark" >Mark As Done</div>
+        <a [routerLink]="'/quiz'" class="routerlink">
+          <div class="mark">Mark As Done</div>
         </a>
         <div class="modal">
 

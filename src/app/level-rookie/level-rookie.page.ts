@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tutorial,Chapter } from '../models/tutorial.model';
 import { TutorialService } from '../services/tutorial.service';
-import { firevariable, userInfo} from '../models/fireVariable';
+import { firevariable, userInfo, quiztitle} from '../models/fireVariable';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
 import { map } from 'rxjs/operators';
@@ -17,7 +17,7 @@ export class LevelRookiePage implements OnInit {
   tutorials?: Tutorial[];
   users?: User[];
   user_email = '';
-  constructor(public tutorialService: TutorialService, private globals: firevariable,private userInfo : userInfo, private userService: UserService) { }
+  constructor(public tutorialService: TutorialService, private globals: firevariable,private userInfo : userInfo, private userService: UserService, private quiztitle : quiztitle) { }
 
   ngOnInit() {
     this.chapter_array();
@@ -71,6 +71,7 @@ export class LevelRookiePage implements OnInit {
 
   retrieveTutorials(val): void {
     this.globals.setChapter(`Chapter ${val}`, "");
+    this.quiztitle.setQuiz(`Quiz ${val}`);
     this.tutorialService.getAll().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
@@ -78,12 +79,11 @@ export class LevelRookiePage implements OnInit {
         )
       )
     ).subscribe(data => {
-
+      var chapter_text = '';
      for(var i=0; i<data.length; i++){
       if(`Chapter ${val}`==JSON.parse(JSON.stringify(data[i].chapter)).name){
-        this.globals.setChapter(JSON.parse(JSON.stringify(data[i].chapter)).name, data[i].chapterContent);
-      }else{
-        console.log("false")
+        chapter_text += data[i].chapterContent;
+        this.globals.setChapter(JSON.parse(JSON.stringify(data[i].chapter)).name,  chapter_text);
       }
      }
       this.tutorials = data;

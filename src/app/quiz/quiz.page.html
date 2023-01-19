@@ -10,15 +10,15 @@
   </div>
   <div class="context">
     <div class="content">
-      <div class="content1">Quiz 1</div>
+      <div class="content1">{{Quiz_title}}</div>
       <div class="section">
         <div>
           <div style="overflow: auto;">
             <div class="">
               <ul class="" style="list-style-type: none;">
-                <li class="quiz_content"  *ngFor="let tutorial of tutorials; let i = index"
-                  [class.active]="i == currentIndex" (click)="setActiveTutorial(tutorial, i)">
-                  <span style="font-size: 5vw;">Q1.</span> <div style="margin-left: 5vw;">{{ tutorial.question }}</div> 
+                <li class="quiz_content">
+                  <span style="font-size: 5vw;">Q{{count+1}}</span>
+                  <div style="margin-left: 5vw;">{{question}}</div>
                 </li>
               </ul>
             </div>
@@ -26,46 +26,56 @@
               <div *ngIf="currentTutorial">
                 <app-tutorial-details (refreshList)="refreshList()" [tutorial]="currentTutorial"></app-tutorial-details>
               </div>
-           
+
             </div>
           </div>
         </div>
         <div class="discription">
-
-
-
-
-
           <ul style="list-style-type: none;">
-            <li>
-              <label class="problemCheck">is
+            <li (click)="isCheck(1)">
+              <label class="problemCheck">{{answer['0']}}
                 <input type="radio" name="answer">
-                <span class="checkmark" ></span>
+                <span class="checkmark"></span>
+                <img *ngIf = "isConfirm && isRight[1]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh;margin-left: 25vw;" src="../../assets/img/check.png" alt="">
+                <img *ngIf = "isConfirm && !isRight[1]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh" src="../../assets/img/x.png" alt="">
               </label>
             </li>
-            <li>
-              <label class="problemCheck">are
+            <li (click)="isCheck(2)">
+              <label class="problemCheck">{{answer['1']}}
                 <input type="radio" name="answer">
-                <span class="checkmark" ></span>
+                <span class="checkmark"></span>
+                <img *ngIf = "isConfirm && isRight[2]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh;margin-left: 25vw" src="../../assets/img/check.png" alt="">
+                <img *ngIf = "isConfirm && !isRight[2]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh" src="../../assets/img/x.png" alt="">
               </label>
             </li>
-            <li>
-              <label class="problemCheck">am
+            <li (click)="isCheck(3)">
+              <label class="problemCheck">{{answer['2']}}
                 <input type="radio" name="answer">
-                <span class="checkmark" ></span>
+                <span class="checkmark"></span>
+                <img *ngIf = "isConfirm && isRight[3]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh;margin-left: 25vw" src="../../assets/img/check.png" alt="">
+                <img *ngIf = "isConfirm && !isRight[3]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh" src="../../assets/img/x.png" alt="">
               </label>
             </li>
-            <li>
-              <label class="problemCheck">will
+            <li (click)="isCheck(4)">
+              <label class="problemCheck">{{answer['3']}}
                 <input type="radio" name="answer">
-                <span class="checkmark" ></span>
+                <span class="checkmark"></span>
+                <img *ngIf = "isConfirm && isRight[4]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh;margin-left: 25vw" src="../../assets/img/check.png" alt="">
+                <img *ngIf = "isConfirm && !isRight[4]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh" src="../../assets/img/x.png" alt="">
               </label>
             </li>
           </ul>
-        
-        
-
         </div>
+        <div class="test_btn">
+          <div>
+            <button class="confirm" (click)="confirm()">confirm</button>
+          </div>
+          <div>
+            <button class="next" (click)="next()">next</button>
+          </div>
+        </div>
+
+
       </div>
     </div>
 
