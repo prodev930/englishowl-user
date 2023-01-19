@@ -14,11 +14,37 @@
       <div class="section">
         <div class="content2">Warming Up With Essential Grammatical Terms</div>
         <div class="discription">
-          <div>**Description Goes Here</div>
-          <div>**Description Goes Here</div>
+          <!-- Goal Overview Card -->
+         <div class="col-xl-6 col-12">
+          <div class="card">
+            <div
+              class="card-header d-flex flex-sm-row flex-column justify-content-md-between align-items-start justify-content-start"
+            >
+              <h4 class="card-title mb-sm-0 mb-1">Statistics</h4>
+            </div>
+            <div class="card-body">
+              <div id="radialbar-chart" #apexRadialChartRef>
+                <apx-chart
+                  [series]="apexRadialChart.series"
+                  [chart]="{
+                    height: 400,
+                    width: isMenuToggled === false ? apexRadialChartRef.offsetWidth : apexRadialChart.chart.width,
+                    type: 'radialBar'
+                  }"
+                  [plotOptions]="apexRadialChart.plotOptions"
+                  [labels]="apexRadialChart.labels"
+                  [colors]="apexRadialChart.colors"
+                  [stroke]="apexRadialChart.stroke"
+                  [legend]="apexRadialChart.legend"
+                ></apx-chart>
+              </div>
+            </div>
+          </div>
+        </div>
+          <!--/ Goal Overview Card -->
         </div>
       </div>
     </div>
-  
+
   </div>
 </div>

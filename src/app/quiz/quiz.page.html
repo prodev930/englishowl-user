@@ -34,48 +34,57 @@
           <ul style="list-style-type: none;">
             <li (click)="isCheck(1)">
               <label class="problemCheck">{{answer['0']}}
-                <input type="radio" name="answer">
+                <input type="radio" name="answer" [ngModel]="defaultChoice" (change)="handleChange($event)">
                 <span class="checkmark"></span>
-                <img *ngIf = "isConfirm && isRight[1]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh;margin-left: 25vw;" src="../../assets/img/check.png" alt="">
-                <img *ngIf = "isConfirm && !isRight[1]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh" src="../../assets/img/x.png" alt="">
+                <img *ngIf="isConfirm && isRight[1]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh;"
+                  src="../../assets/img/check.png" alt="">
+                <img *ngIf="isConfirm && !isRight[1]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh"
+                  src="../../assets/img/x.png" alt="">
               </label>
             </li>
             <li (click)="isCheck(2)">
               <label class="problemCheck">{{answer['1']}}
-                <input type="radio" name="answer">
+                <input type="radio" name="answer" [ngModel]="defaultChoice" (change)="handleChange($event)">
                 <span class="checkmark"></span>
-                <img *ngIf = "isConfirm && isRight[2]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh;margin-left: 25vw" src="../../assets/img/check.png" alt="">
-                <img *ngIf = "isConfirm && !isRight[2]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh" src="../../assets/img/x.png" alt="">
+                <img *ngIf="isConfirm && isRight[2]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh;"
+                  src="../../assets/img/check.png" alt="">
+                <img *ngIf="isConfirm && !isRight[2]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh"
+                  src="../../assets/img/x.png" alt="">
               </label>
             </li>
             <li (click)="isCheck(3)">
               <label class="problemCheck">{{answer['2']}}
-                <input type="radio" name="answer">
+                <input type="radio" name="answer" [ngModel]="defaultChoice" (change)="handleChange($event)">
                 <span class="checkmark"></span>
-                <img *ngIf = "isConfirm && isRight[3]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh;margin-left: 25vw" src="../../assets/img/check.png" alt="">
-                <img *ngIf = "isConfirm && !isRight[3]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh" src="../../assets/img/x.png" alt="">
+                <img *ngIf="isConfirm && isRight[3]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh;"
+                  src="../../assets/img/check.png" alt="">
+                <img *ngIf="isConfirm && !isRight[3]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh"
+                  src="../../assets/img/x.png" alt="">
               </label>
             </li>
             <li (click)="isCheck(4)">
               <label class="problemCheck">{{answer['3']}}
                 <input type="radio" name="answer">
                 <span class="checkmark"></span>
-                <img *ngIf = "isConfirm && isRight[4]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh;margin-left: 25vw" src="../../assets/img/check.png" alt="">
-                <img *ngIf = "isConfirm && !isRight[4]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh" src="../../assets/img/x.png" alt="">
+                <img *ngIf="isConfirm && isRight[4]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh;"
+                  src="../../assets/img/check.png" alt="">
+                <img *ngIf="isConfirm && !isRight[4]['flag']" style="width:7vw;height: 5vh;margin-top: -0.5vh"
+                  src="../../assets/img/x.png" alt="">
               </label>
             </li>
           </ul>
         </div>
         <div class="test_btn">
           <div>
-            <button class="confirm" (click)="confirm()">confirm</button>
+            <button class="confirm" (click)="confirm($event)">confirm</button>
           </div>
           <div>
             <button class="next" (click)="next()">next</button>
           </div>
         </div>
-
-
+        <div class="explanation">
+          <div *ngIf="isConfirm" class="exp_text"><span>Explanation : </span>{{explanation[count]}}</div>
+        </div>
       </div>
     </div>
 

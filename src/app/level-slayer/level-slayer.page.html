@@ -14,16 +14,14 @@
     <div class="section">
       <div class="selectChapter" style="display: flex; flex-direction: column;">
         <div class="chapterbtn-group" *ngFor="let chapter of chapters; let i = index">
-          <a [routerLink]="'/chapter'" (click)="retrieveTutorials(chapter.id)" class="routerlink">
+          <a [routerLink]="chapter.lockstatus ? '/chapter' : '/level-slayer'" (click)="retrieveTutorials(chapter.id)" class="routerlink">
             <div class="chapterbtn" style="margin-top: 3vh">
               <div class="chapter">
                 <div class="chapterTxt">{{chapter.chaptername}}</div>
-                <img style="margin-left: 5vw;" *ngIf="!chapter.email && chapter.id != 1" class="key" src="../../assets/img/lock.png" alt="" />
-                <!-- <img *ngIf="chapter.email && " class="key" src="../../assets/img/lock.png" alt="" /> -->
+                <img *ngIf="!chapter.lockstatus" class="key" src="../../assets/img/lock.png" alt="" />
               </div>
             </div>
           </a>
-
         </div>
       </div>
 

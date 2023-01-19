@@ -25,6 +25,10 @@ export class QuizPage implements OnInit {
   isRight = [];
   isConfirm = false;
   isMark = 0;
+  explanation = [];
+  isSelect = false;
+  defaultChoice = '';
+  someOtherValue = 'sd';
 
   constructor(private tutorialService: TutorialService, private quiztilte: quiztitle, public router: Router, private totalMark: testMark) { }
 
@@ -36,9 +40,9 @@ export class QuizPage implements OnInit {
   }
   isRight_init(): void {
     this.isMark = 0;
-    for(let i=0; i<4; i++) {
-      this.isRight[i+1] ={
-        flag : false
+    for (let i = 0; i < 4; i++) {
+      this.isRight[i + 1] = {
+        flag: false
       }
     }
   }
@@ -60,21 +64,23 @@ export class QuizPage implements OnInit {
         )
       )
     ).subscribe(data => {
-      if(data && data.length > 0) {
+      console.log(data);
+      if (data && data.length > 0) {
         for (let i in data) {
           var random = [];
-          for(var j = 0;j<4 ; j++){
-              var temp = Math.floor(Math.random()*4)+1;
-              if(random.indexOf(temp) == -1){
-                random.push(temp);
-                if(temp == 1) {
-                  this.right_array.push(j);
-                }
+          for (var j = 0; j < 4; j++) {
+            var temp = Math.floor(Math.random() * 4) + 1;
+            if (random.indexOf(temp) == -1) {
+              random.push(temp);
+              if (temp == 1) {
+                this.right_array.push(j);
               }
-              else
+            }
+            else
               j--;
           }
           this.totalData[i] = data[i].question;
+          this.explanation[i] = data[i]["explanation"];
           this.totalAnswer[data[i].question] = {
             0: data[i][`answer${random[0]}`],
             1: data[i][`answer${random[1]}`],
@@ -90,8 +96,9 @@ export class QuizPage implements OnInit {
 
 
   next(): void {
-    if(this.isConfirm) {
+    if (this.isConfirm && this.isSelect) {
       this.isConfirm = false;
+      this.isSelect = false;
       this.count += 1;
       if (this.totalData && this.count < this.totalData.length) {
         this.question = this.totalData[this.count];
@@ -103,10 +110,11 @@ export class QuizPage implements OnInit {
     }
   }
 
-  confirm(): void {
-    if(!this.isConfirm) {
+  confirm(evt): void {
+    this.defaultChoice = '';
+    if (!this.isConfirm && this.isSelect) {
       this.isConfirm = true;
-      if(this.isMark == 1) {
+      if (this.isMark == 1) {
         this.totalMark.currentMark.subscribe(Mark => this.isMark += Mark);
         this.totalMark.setMark(this.isMark);
       }
@@ -115,19 +123,24 @@ export class QuizPage implements OnInit {
   }
 
   isCheck(number): void {
-    if(!this.isConfirm) {
-      console.log(this.right_array);
+    console.log(this.isCheck);
+    if (!this.isConfirm) {
       this.isRight_init();
-      if(number == this.right_array[this.count]+1) {
-        this.isRight[number] = {"flag":true};
+      this.isSelect = true;
+      if (number == this.right_array[this.count] + 1) {
+        this.isRight[number] = { "flag": true };
         this.isMark = 1;
-        console.log(this.isRight[number]["flag"])
       } else {
-        this.isRight[this.right_array[this.count]+1] = {"flag":true};
+        this.isRight[this.right_array[this.count] + 1] = { "flag": true };
         this.isMark = 0;
       }
     }
   }
+  handleChange(event) {
+    this.defaultChoice = this.someOtherValue;
+    console.log('handle change', event.target.id);
+  }
+
 
   setActiveTutorial(tutorial: Tutorial, index: number): void {
     this.currentTutorial = tutorial;

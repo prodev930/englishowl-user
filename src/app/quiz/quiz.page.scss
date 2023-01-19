@@ -66,7 +66,7 @@
                     align-items: center;
 
                     .confirm {
-                        font-size: 5vw;
+                        font-size: 4vw;
                         color: rgb(255, 255, 255);
                         width: 20vw;
                         height: 5vh;
@@ -76,13 +76,22 @@
                     }
 
                     .next {
-                        font-size: 6vw;
+                        font-size: 5vw;
                         color: rgb(255, 255, 255);
                         width: 20vw;
                         height: 5vh;
                         background: linear-gradient(93.98deg, #05ECC2 -3.37%, rgba(4, 121, 100, 0.25) 109.33%);
                         box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.25), 10px 10px 20px #000000;
                         border-radius: 10px;
+                    }
+                }
+
+                .explanation {
+                    height: 40vh;
+                    padding-top: 15vh;
+
+                    .exp_text {
+                        color: #05ECC2;
                     }
                 }
 
