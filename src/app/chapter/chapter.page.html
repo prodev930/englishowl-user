@@ -10,15 +10,14 @@
   </div>
   <div class="context">
     <div class="content">
-      <div class="content1">Chapter1</div>
+      <div class="content1">{{chapter_title}}</div>
       <div class="section">
         <div class="content2">Warming Up With Essential Grammatical Terms</div>
         <div class="discription">
           <div style="height: 34.9vh; overflow: auto;">
             <div class="">
               <ul class="" style="list-style-type: none;">
-                <li class="chapter_content" style="width: 80vw; font-size: 5vw;" *ngFor="let tutorial of tutorials; let i = index"
-                  [class.active]="i == currentIndex" (click)="setActiveTutorial(tutorial, i)" [innerHTML] = "html">
+                <li class="chapter_content" style="width: 80vw; font-size: 5vw;" [innerHTML] = "html">
                 </li> 
               </ul>
             </div>
