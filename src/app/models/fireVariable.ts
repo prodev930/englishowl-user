@@ -14,3 +14,12 @@ export class firevariable {
         this.ChapterContent.next(ChapterContent);
     }
 }
+
+export class userInfo {
+    private email = new BehaviorSubject<string>("");
+    currentEmail = this.email.asObservable();
+    constructor() { }
+    setEmail(Email: string) {
+        this.email.next(Email);
+    }
+}

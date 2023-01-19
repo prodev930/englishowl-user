@@ -12,85 +12,21 @@
     </div>
 
     <div class="section">
-      <div class="selectChapter">
-        <div class="chapterbtn-group">
-          <a [routerLink]="'/chapter'" (click)="retrieveTutorials('Chapter 1')" class="routerlink">
-            <div class="chapterbtn">
-              <div class="chapter">
-                <div class="chapterTxt">Chapter 1</div>
-              </div>
-            </div>
-          </a>
-          <a [routerLink]="'/chapter'" (click)="retrieveTutorials('Chapter 2')" class="routerlink">
+      <div class="selectChapter" style="display: flex; flex-direction: column;">
+        <div class="chapterbtn-group" *ngFor="let chapter of chapters; let i = index">
+          <a [routerLink]="chapter.lockstatus ? '/chapter' : '/level-rookie'" (click)="retrieveTutorials(chapter.id)" class="routerlink">
             <div class="chapterbtn" style="margin-top: 3vh">
               <div class="chapter">
-                <div class="chapterTxt">Chapter 2</div>
-                <img class="key" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </a>
-          <a [routerLink]="'/chapter'" (click)="retrieveTutorials('Chapter 3')" class="routerlink">
-            <div class="chapterbtn" style="margin-top: 3vh">
-              <div class="chapter">
-                <div class="chapterTxt">Chapter 3</div>
-                <img class="key" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </a>
-          <a [routerLink]="'/chapter'" (click)="retrieveTutorials('Chapter 4')" class="routerlink">
-            <div class="chapterbtn" style="margin-top: 3vh">
-              <div class="chapter">
-                <div class="chapterTxt">Chapter 4</div>
-                <img class="key" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </a>
-          <a [routerLink]="'/chapter'" (click)="retrieveTutorials('Chapter 5')" class="routerlink">
-            <div class="chapterbtn" style="margin-top: 3vh">
-              <div class="chapter">
-                <div class="chapterTxt">Chapter 5</div>
-                <img class="key" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </a>
-          <a [routerLink]="'/chapter'" (click)="retrieveTutorials('Chapter 6')" class="routerlink">
-            <div class="chapterbtn" style="margin-top: 3vh">
-              <div class="chapter">
-                <div class="chapterTxt">Chapter 6</div>
-                <img class="key" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </a>
-          <a [routerLink]="'/chapter'" (click)="retrieveTutorials('Chapter 7')" class="routerlink">
-            <div class="chapterbtn" style="margin-top: 3vh">
-              <div class="chapter">
-                <div class="chapterTxt">Chapter 7</div>
-                <img class="key" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </a>
-          <a [routerLink]="'/chapter'" (click)="retrieveTutorials('Chapter 8')" class="routerlink">
-            <div class="chapterbtn" style="margin-top: 3vh">
-              <div class="chapter">
-                <div class="chapterTxt">Chapter 8</div>
-                <img class="key" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </a>
-          <a [routerLink]="'/chapter'" (click)="retrieveTutorials('Chapter 9')" class="routerlink">
-            <div class="chapterbtn" style="margin-top: 3vh">
-              <div class="chapter">
-                <div class="chapterTxt">Chapter 9</div>
-                <img class="key" src="../../assets/img/lock.png" alt="" />
+                <div class="chapterTxt">{{chapter.chaptername}}</div>
+                <img *ngIf="!chapter.lockstatus" class="key" src="../../assets/img/lock.png" alt="" />
               </div>
             </div>
           </a>
         </div>
       </div>
-
+      
       <div class="selectLevel">
         <div class="rookie">Rookie</div>
-
       </div>
     </div>
   </div>

@@ -12,65 +12,21 @@
     </div>
 
     <div class="section">
-      <div class="selectChapter">
-        <div class="chapterbtn-group">
-          <div class="chapterbtn">
-            <div class="chapter">
-              <div class="chapterTxt">Chapter 19</div>
-              <img class="key" src="../../assets/img/lock.png" alt="" />
+      <div class="selectChapter" style="display: flex; flex-direction: column;">
+        <div class="chapterbtn-group" *ngFor="let chapter of chapters; let i = index">
+          <a [routerLink]="'/chapter'" (click)="retrieveTutorials(chapter.id)" class="routerlink">
+            <div class="chapterbtn" style="margin-top: 3vh">
+              <div class="chapter">
+                <div class="chapterTxt">{{chapter.chaptername}}</div>
+                <img style="margin-left: 5vw;" *ngIf="!chapter.email && chapter.id != 1" class="key" src="../../assets/img/lock.png" alt="" />
+                <!-- <img *ngIf="chapter.email && " class="key" src="../../assets/img/lock.png" alt="" /> -->
+              </div>
             </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div class="chapterTxt">Chapter 20</div>
-              <img class="key" src="../../assets/img/lock.png" alt="" />
-            </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div class="chapterTxt">Chapter 21</div>
-              <img class="key" src="../../assets/img/lock.png" alt="" />
-            </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div class="chapterTxt">Chapter 22</div>
-              <img class="key" src="../../assets/img/lock.png" alt="" />
-            </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div class="chapterTxt">Chapter 23</div>
-              <img class="key" src="../../assets/img/lock.png" alt="" />
-            </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div class="chapterTxt">Chapter 24</div>
-              <img class="key" src="../../assets/img/lock.png" alt="" />
-            </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div class="chapterTxt">Chapter 25</div>
-              <img class="key" src="../../assets/img/lock.png" alt="" />
-            </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div class="chapterTxt">Chapter 26</div>
-              <img class="key" src="../../assets/img/lock.png" alt="" />
-            </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div class="chapterTxt">Chapter 27</div>
-              <img class="key" src="../../assets/img/lock.png" alt="" />
-            </div>
-          </div>
-       
+          </a>
+
         </div>
       </div>
+
 
       <div class="selectLevel">
         <div class="rookie">Slayer</div>

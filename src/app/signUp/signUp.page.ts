@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { map } from 'rxjs/operators';
@@ -10,12 +11,11 @@ import { map } from 'rxjs/operators';
   styleUrls: ['signUp.page.scss'],
 })
 export class signUpComponent {
-  // user?: User[];
   user: User = new User();
   submitted = false;
-  public userData;
+  public userData=[];
 
-  constructor(private UserService: UserService) { }
+  constructor(private UserService: UserService, public router: Router,) { }
 
   refreshList(): void {
     this.retrieveTutorials();
@@ -28,26 +28,46 @@ export class signUpComponent {
         )
       )
     ).subscribe(data => {
-      console.log("dsafadsf", data);
       this.userData = data;
+      console.log(data);
     });
   }
 
   signUp(): void {
-    for (var i = 0; i < this.userData.length; i++) {
-      if (this.userData[i].email == this.user.email) {
-        alert("Already email");
-        break;
+    if (this.userData && this.userData.length > 0) {
+      let isEmail: boolean = false;
+      for (let i in this.userData) {
+        console.log(i);
+        if (this.userData[i].email == this.user.email) {
+          alert("Already email");
+          isEmail = true;
+          break;
+        }
       }
-      // else {
-      //   alert('Created new item successfully!');
-      //   this.UserService.create(this.user).then(() => {
-      //   });
-      // }
-    }
-    this.UserService.create(this.user).then(() => {
-    });
+      if (!isEmail) {
+        if (this.user.email == '' || this.user.email == undefined && this.user.password == '' || this.user.password == undefined) {
+          alert("Correct Input");
+        } else {
+          this.user.chapter_status = 1;
+          this.UserService.create(this.user).then(() => {
+          });
+          alert('Created new item successfully!');
+          this.router.navigate(['signin']);
+        }
+      }
+    } else {
+      if (this.user.email == '' || this.user.email == undefined && this.user.password == '' || this.user.password == undefined) {
+        alert("Correct Input");
+      } else {
+        this.user.chapter_status = 1;
+        this.UserService.create(this.user).then(() => {
+        });
+        alert('Created new item successfully!');
+        this.router.navigate(['signin']);
 
+      }
+
+    }
   }
 
   ngOnInit(): void {

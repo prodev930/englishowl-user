@@ -13,3 +13,10 @@ export class Tutorial {
   question?: string;
   quiz?: string;
 }
+
+export class Chapter {
+  id?: number;
+  chaptername?: string;
+  lockstatus?:boolean;
+}
+

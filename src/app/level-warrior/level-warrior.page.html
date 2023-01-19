@@ -12,98 +12,17 @@
     </div>
 
     <div class="section">
-      <div class="selectChapter">
-        <div class="chapterbtn-group">
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div style="width: 70%">
-                <div class="chapterTxt" style="margin-left: 4vw;">Chapter 10</div>
-              </div>
-              <div style="width: 30%;">
-                <img class="key" style="margin-left: 8.9vw;" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div style="width: 70%">
-                <div class="chapterTxt" style="margin-left: 4vw;">Chapter 11</div>
-              </div>
-              <div style="width: 30%;">
-                <img class="key" style="margin-left: 8.9vw;" src="../../assets/img/lock.png" alt="" />
+      <div class="selectChapter" style="display: flex; flex-direction: column;">
+        <div class="chapterbtn-group" *ngFor="let chapter of chapters; let i = index">
+          <a [routerLink]="'/chapter'" (click)="retrieveTutorials(chapter.id)" class="routerlink">
+            <div class="chapterbtn" style="margin-top: 3vh">
+              <div class="chapter">
+                <div class="chapterTxt">{{chapter.chaptername}}</div>
+                <img style="margin-left: 5vw;" *ngIf="!chapter.email && chapter.id != 1" class="key" src="../../assets/img/lock.png" alt="" />
+                <!-- <img *ngIf="chapter.email && " class="key" src="../../assets/img/lock.png" alt="" /> -->
               </div>
             </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div style="width: 70%">
-                <div class="chapterTxt" style="margin-left: 4vw;">Chapter 12</div>
-              </div>
-              <div style="width: 30%;">
-                <img class="key" style="margin-left: 8.9vw;" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div style="width: 70%">
-                <div class="chapterTxt" style="margin-left: 4vw;">Chapter 13</div>
-              </div>
-              <div style="width: 30%;">
-                <img class="key" style="margin-left: 8.9vw;" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div style="width: 70%">
-                <div class="chapterTxt" style="margin-left: 4vw;">Chapter 14</div>
-              </div>
-              <div style="width: 30%;">
-                <img class="key" style="margin-left: 8.9vw;" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div style="width: 70%">
-                <div class="chapterTxt" style="margin-left: 4vw;">Chapter 15</div>
-              </div>
-              <div style="width: 30%;">
-                <img class="key" style="margin-left: 8.9vw;" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div style="width: 70%">
-                <div class="chapterTxt" style="margin-left: 4vw;">Chapter 16</div>
-              </div>
-              <div style="width: 30%;">
-                <img class="key" style="margin-left: 8.9vw;" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div style="width: 70%">
-                <div class="chapterTxt" style="margin-left: 4vw;">Chapter 17</div>
-              </div>
-              <div style="width: 30%;">
-                <img class="key" style="margin-left: 8.9vw;" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="chapterbtn" style="margin-top: 3vh">
-            <div class="chapter">
-              <div style="width: 70%">
-                <div class="chapterTxt" style="margin-left: 4vw;">Chapter 18</div>
-              </div>
-              <div style="width: 30%;">
-                <img class="key" style="margin-left: 8.9vw;" src="../../assets/img/lock.png" alt="" />
-              </div>
-            </div>
-          </div>
+          </a>
 
         </div>
       </div>

@@ -15,7 +15,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 
-import { firevariable } from './models/fireVariable';
+import { firevariable, userInfo } from './models/fireVariable';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +32,7 @@ import { firevariable } from './models/fireVariable';
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, firevariable],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, firevariable, userInfo],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
