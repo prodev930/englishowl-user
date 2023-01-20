@@ -56,6 +56,50 @@
             }
         }
 
+        .markDone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 9.8vh;
+            width: 80%;
+
+            .mark {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-size: 6vw;
+                color: white;
+                width: 150%;
+                height: 5vh;
+                height: 9vh;
+                background: #202224;
+                box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.25), 10px 10px 20px #000000;
+                border-radius: 10px;
+            }
+
+            .mark:hover {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                color: #000000;
+                background: linear-gradient(93.18deg, #05ECC2 0%, rgba(4, 121, 100, 0.25) 103.6%);
+                box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.25), 10px 10px 20px #000000;
+                border-radius: 10px;
+            }
+
+            .mark:active {
+                background: #202224;
+                box-shadow: inset -10px -10px 20px rgba(255, 255, 255, 0.25), inset 10px 10px 20px #000000;
+                border-radius: 10px;
+            }
+
+        }
+
+
         .footer {
             justify-content: center;
             display: flex;
@@ -63,20 +107,6 @@
             flex-direction: column;
             gap: 1.5vh;
 
-            .mark {
-                text-decoration: none;
-                width: 70vw;
-                font-size: 5vw;
-                color: white;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                padding: 25px;
-                background: #202224;
-                box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.25), 10px 10px 20px #000000;
-                border-radius: 10px;
-            }
 
             .modal {
                 display: flex;
@@ -92,7 +122,7 @@
                     gap: 124px;
                     margin-top: 5.0777vh;
 
-                    .outHome{
+                    .outHome {
                         margin-top: -4.49999vh;
                     }
                 }

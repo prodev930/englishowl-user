@@ -5,6 +5,8 @@ import { firevariable, userInfo, quiztitle } from '../models/fireVariable';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-level-slayer',
@@ -17,7 +19,7 @@ export class LevelSlayerPage implements OnInit {
   tutorials?: Tutorial[];
   users?: User[];
   user_email = '';
-  constructor(public tutorialService: TutorialService, private globals: firevariable, private userInfo: userInfo, private userService: UserService, private quiztitle: quiztitle) { }
+  constructor(public tutorialService: TutorialService,public router: Router, private globals: firevariable, private userInfo: userInfo, private userService: UserService, private quiztitle: quiztitle) { }
 
   ngOnInit() {
     this.chapter_array();
@@ -90,5 +92,7 @@ export class LevelSlayerPage implements OnInit {
     });
   }
 
-
+  signout() {
+    this.router.navigate(['signin']);
+  }
 }

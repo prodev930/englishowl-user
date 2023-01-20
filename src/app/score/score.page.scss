@@ -46,6 +46,40 @@
             .section {
                 display: flex;
                 flex-direction: column;
+
+                .retake {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: 8vh;
+
+                    .test_again {
+                        font-size: 6vw;
+                        color: white;
+                        width: 70%;
+                        height: 5vh;
+                        height: 20vh;
+                        background: #202224;
+                        box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.25), 10px 10px 20px #000000;
+                        border-radius: 10px;
+                    }
+
+                    .test_again:hover {
+                        color: #000000;
+                        background: linear-gradient(93.18deg, #05ECC2 0%, rgba(4, 121, 100, 0.25) 103.6%);
+                        box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.25), 10px 10px 20px #000000;
+                        border-radius: 10px;
+                    }
+
+                    .test_again:active {
+                        background: #202224;
+                        box-shadow: inset -10px -10px 20px rgba(255, 255, 255, 0.25), inset 10px 10px 20px #000000;
+                        border-radius: 10px;
+                    }
+
+                }
+
             }
 
             .discription {
@@ -92,7 +126,7 @@
                     gap: 124px;
                     margin-top: 5.0777vh;
 
-                    .outHome{
+                    .outHome {
                         margin-top: -4.49999vh;
                     }
                 }

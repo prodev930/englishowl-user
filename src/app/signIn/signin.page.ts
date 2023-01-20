@@ -17,7 +17,7 @@ export class SignInPage implements OnInit {
     public authService: AuthenticationService,
     public router: Router,
     private userService: UserService,
-    private globals: userInfo, 
+    private globals: userInfo,
   ) { }
 
   users?: User[];
@@ -36,9 +36,13 @@ export class SignInPage implements OnInit {
     ).subscribe(data => {
       this.users = data;
       for (var i = 0; i < data.length; i++) {
-        if(email.value==data[i].email){
+        if (email.value == data[i].email) {
+          alert("Success");
           this.globals.setEmail(email.value);
           this.router.navigate(['level']);
+        }
+        else{
+          alert("False");
         }
       }
     });

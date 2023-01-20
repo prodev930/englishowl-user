@@ -38,4 +38,9 @@ export class testMark {
     setMark(mark: number) {
         this.mark.next(mark);
     }
+    private problem = new BehaviorSubject<number>(0);
+    currentProblem = this.problem.asObservable();
+    setProblem(problem: number) {
+        this.problem.next(problem);
+    }
 }

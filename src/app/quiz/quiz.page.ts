@@ -27,16 +27,22 @@ export class QuizPage implements OnInit {
   isMark = 0;
   explanation = [];
   isSelect = false;
-  defaultChoice = '';
-  someOtherValue = 'sd';
+  defaultChoice = "";
+  total_problem = 0;
 
   constructor(private tutorialService: TutorialService, private quiztilte: quiztitle, public router: Router, private totalMark: testMark) { }
 
   ngOnInit(): void {
+    this.init_gloablMark();
     this.isRight_init();
     this.retrieveTutorials();
     this.quizTitle();
     this.count = 0;
+    this.total_problem = 0;
+  }
+  init_gloablMark(): void {
+    this.totalMark.setMark(0);
+    this.totalMark.setProblem(0);
   }
   isRight_init(): void {
     this.isMark = 0;
@@ -64,8 +70,9 @@ export class QuizPage implements OnInit {
         )
       )
     ).subscribe(data => {
-      console.log(data);
       if (data && data.length > 0) {
+        this.total_problem = data.length;
+        this.totalMark.setProblem(this.total_problem);
         for (let i in data) {
           var random = [];
           for (var j = 0; j < 4; j++) {
@@ -87,9 +94,11 @@ export class QuizPage implements OnInit {
             2: data[i][`answer${random[2]}`],
             3: data[i][`answer${random[3]}`]
           }
+          if(i == '0') {
+            this.question = this.totalData[0];
+            this.answer = this.totalAnswer[this.question];
+          }
         }
-        this.question = this.totalData[0];
-        this.answer = this.totalAnswer[this.question];
       }
     });
   }
@@ -97,10 +106,11 @@ export class QuizPage implements OnInit {
 
   next(): void {
     if (this.isConfirm && this.isSelect) {
+      this.isMark = 0;
       this.isConfirm = false;
       this.isSelect = false;
       this.count += 1;
-      if (this.totalData && this.count < this.totalData.length) {
+      if (this.totalData && this.totalData.length > 0 && this.count < this.totalData.length) {
         this.question = this.totalData[this.count];
         this.answer = this.totalAnswer[this.question];
       } else {
@@ -108,10 +118,11 @@ export class QuizPage implements OnInit {
         this.router.navigate(['score']);
       }
     }
+    this.defaultChoice = "";
+
   }
 
   confirm(): void {
-    this.defaultChoice = '';
     if (!this.isConfirm && this.isSelect) {
       this.isConfirm = true;
       if (this.isMark == 1) {
@@ -123,7 +134,6 @@ export class QuizPage implements OnInit {
   }
 
   isCheck(number): void {
-    console.log(this.isCheck);
     if (!this.isConfirm) {
       this.isRight_init();
       this.isSelect = true;
@@ -136,15 +146,15 @@ export class QuizPage implements OnInit {
       }
     }
   }
-  handleChange(event) {
-    this.defaultChoice = this.someOtherValue;
-    console.log('handle change', event.target.id);
-  }
-
 
   setActiveTutorial(tutorial: Tutorial, index: number): void {
     this.currentTutorial = tutorial;
     this.currentIndex = index;
   }
-
+  handleChange(v) {
+    this.defaultChoice = v;
+  }
+  signout() {
+    this.router.navigate(['signin']);
+  }
 }

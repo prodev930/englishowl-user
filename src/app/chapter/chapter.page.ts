@@ -39,22 +39,20 @@ export class ChapterPage implements OnInit {
   }
 
   retrieveTutorials(): void {
-    // this.tutorialService.getAll().snapshotChanges().pipe(
-    //   map(changes =>
-    //     changes.map(c =>
-    //       ({ id: c.payload.key, ...c.payload.val() })
-    //     )
-    //   )
-    // ).subscribe(data => {
-    //   this.tutorials = data;
+    this.tutorialService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ id: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.tutorials = data;
 
-    //   for (var i in data) {
-    //     this.chapter_text += data[i].chapterContent;
-    //   }
-    //   this.html = this._sanitizer.bypassSecurityTrustHtml(this.chapter_text);
-    //   console.log(this.html);
-    // });
-
+      for (var i in data) {
+        this.chapter_text += data[i].chapterContent;
+      }
+      this.html = this._sanitizer.bypassSecurityTrustHtml(this.chapter_text);
+    });
   }
   signout() {
     this.router.navigate(['signin']);

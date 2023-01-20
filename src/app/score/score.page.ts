@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { testMark } from '../models/fireVariable';
+
 
 import {
   ApexNonAxisChartSeries,
@@ -19,10 +21,18 @@ export type ChartOptions = {
   styleUrls: ['./score.page.scss'],
 })
 export class ScorePage implements OnInit {
+  mark = 0;
+  problem = 0;
+  percent = 0;
   public chartOptions: Partial<ChartOptions>;
-  constructor() {
+  constructor(public testMark: testMark) {}
+
+  ngOnInit() {
+    this.per_calculator();
+  }
+  display_chart(): void {
     this.chartOptions = {
-      series: [90],
+      series: [this.percent],
       chart: {
         height: 350,
         type: "radialBar"
@@ -30,15 +40,24 @@ export class ScorePage implements OnInit {
       plotOptions: {
         radialBar: {
           hollow: {
-            size: "70%"
+            size: "65%"
           }
         }
       },
-      labels: ["70%"]
+      labels: [`${this.percent}%`]
     };
-   }
+  }
 
-  ngOnInit() {
+  per_calculator(): void {
+    this.testMark.currentMark.subscribe(mark => this.mark = mark);
+    this.testMark.currentProblem.subscribe(problem => this.problem = problem);
+    console.log(this.problem, this.mark);
+    if(this.problem > 0) {
+      this.percent = Math.floor((this.mark/this.problem)*100);
+    }else {
+      this.percent = 0;
+    }
+    this.display_chart();
   }
 
 }

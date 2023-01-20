@@ -17,8 +17,8 @@
           <div style="height: 34.9vh; overflow: auto;">
             <div class="">
               <ul class="" style="list-style-type: none;">
-                <li class="chapter_content" style="width: 80vw; font-size: 5vw;" [innerHTML] = "html">
-                </li> 
+                <li class="chapter_content" style="width: 80vw; font-size: 5vw;" [innerHTML]="html">
+                </li>
               </ul>
             </div>
             <div class="col-md-6">
@@ -29,10 +29,13 @@
           </div>
         </div>
       </div>
-      <div class="footer">
-        <a [routerLink]="'/quiz'"class="routerlink">
-          <div class="mark" >Mark As Done</div>
+      <div class="markDone">
+        <a [routerLink]="'/quiz'" class="routerlink">
+          <div class="mark">Mark As Done</div>
         </a>
+      </div>
+      <div class="footer">
+
         <div class="modal">
 
           <ion-img src="../../assets/img/Modal.png" alt=""></ion-img>
