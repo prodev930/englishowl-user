@@ -15,9 +15,11 @@ export class firevariable {
 
 export class userInfo {
     private email = new BehaviorSubject<string>("");
-    private chapter_status = new BehaviorSubject<number>(1);
     currentEmail = this.email.asObservable();
+    private chapter_status = new BehaviorSubject<number>(1);
     currentChapter_status = this.chapter_status.asObservable();
+    private user_id = new BehaviorSubject<string>("");
+    currentUser_id = this.user_id.asObservable();
 
     constructor() { }
     setEmail(Email: string) {
@@ -25,6 +27,9 @@ export class userInfo {
     }
     setchapter_status(Chapter_status: number) {
         this.chapter_status.next(Chapter_status);
+    }
+    setUser_id(user_id: string) {
+        this.user_id.next(user_id);
     }
 }
 

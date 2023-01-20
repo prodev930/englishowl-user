@@ -17,6 +17,8 @@ export class TutorialService {
   getAll(): AngularFireList<Tutorial> {
     return this.tutorialsRef;
   }
+
+  
 }
 
 

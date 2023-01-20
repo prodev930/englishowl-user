@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { Tutorial } from 'src/app/models/tutorial.model';
 import { quiztitle } from '../models/fireVariable';
 import { Router } from '@angular/router';
-import { testMark } from '../models/fireVariable';
+import { testMark, userInfo } from '../models/fireVariable';
 
 @Component({
   selector: 'app-quiz',
@@ -30,7 +30,7 @@ export class QuizPage implements OnInit {
   defaultChoice = "";
   total_problem = 0;
 
-  constructor(private tutorialService: TutorialService, private quiztilte: quiztitle, public router: Router, private totalMark: testMark) { }
+  constructor(private tutorialService: TutorialService, private quiztilte: quiztitle, public router: Router, private totalMark: testMark, private userInfo: userInfo) { }
 
   ngOnInit(): void {
     this.init_gloablMark();
@@ -157,6 +157,8 @@ export class QuizPage implements OnInit {
     this.defaultChoice = v;
   }
   signout() {
+    this.userInfo.setEmail("");
+    this.userInfo.setUser_id("");
     this.totalMark.setMark(0);
     this.router.navigate(['signin']);
   }

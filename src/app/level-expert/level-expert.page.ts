@@ -91,6 +91,8 @@ export class LevelExpertPage implements OnInit {
     });
   }
   signout() {
+    this.userInfo.setEmail("");
+    this.userInfo.setUser_id("");
     this.router.navigate(['signin']);
   }
 

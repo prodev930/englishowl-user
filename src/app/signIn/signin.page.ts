@@ -29,14 +29,14 @@ export class SignInPage implements OnInit {
         )
       )
     ).subscribe(data => {
-      for (var i = 0; i < data.length; i++) {
-        if (email.value == data[i].email) {
-          this.globals.setEmail(email.value);
-          this.globals.setchapter_status(data[i].chapter_status);
-          this.router.navigate(['level']);
-        }
-        else {
-          // alert("False");
+      if(data && data.length > 0){
+        for (var i = 0; i < data.length; i++) {
+          if (email.value == data[i].email && password.value == data[i].password) {
+            this.globals.setEmail(email.value);
+            this.globals.setchapter_status(data[i].chapter_status);
+            this.globals.setUser_id(data[i].id);
+            this.router.navigate(['level']);
+          }
         }
       }
     });

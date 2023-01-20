@@ -26,6 +26,7 @@ export type ChartOptions = {
   styleUrls: ['./score.page.scss'],
 })
 export class ScorePage implements OnInit {
+ 
 
   message = '';
   chapters?: Chapter[];
@@ -34,7 +35,7 @@ export class ScorePage implements OnInit {
   mark = 0;
   problem = 0;
   percent = 0;
-  user_email = '';
+  user_id = '';
   chapter_status = 1;
   chapter_id = '';
   public chartOptions: Partial<ChartOptions>;
@@ -42,7 +43,6 @@ export class ScorePage implements OnInit {
 
   ngOnInit() {
     this.per_calculator();
-   
   }
   display_chart(): void {
     this.chartOptions = {
@@ -76,20 +76,25 @@ export class ScorePage implements OnInit {
   nextChapter() {
     if (this.percent >= 90) {
       this.userInfo.currentChapter_status.subscribe(status => this.chapter_status = status);
-      this.userInfo.currentEmail.subscribe(email => this.user_email = email);
+      this.userInfo.currentUser_id.subscribe(id => this.user_id = id);
       this.Global.currentChapter.subscribe(chapter_id => this.chapter_id = chapter_id);
 
-      if (this.user_email != '') {
+      if (this.user_id != '') {
         if (this.chapter_id != '') {
           var id = this.chapter_id.split(" ")[1];
           if (this.chapter_status == Number(id)) {
             this.userInfo.setchapter_status(this.chapter_status + 1);
+            this.userService.update(this.user_id, { chapter_status: this.chapter_status })
+              .then(() =>{ })
+              .catch(err => console.log(err));
           }
         }
       }
     }
   }
   signout() {
+    this.userInfo.setEmail("");
+    this.userInfo.setUser_id("");
     this.totalMark.setMark(0);
     this.router.navigate(['signin']);
   }
