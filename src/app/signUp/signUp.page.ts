@@ -29,7 +29,6 @@ export class signUpComponent {
       )
     ).subscribe(data => {
       this.userData = data;
-      console.log(data);
     });
   }
 
@@ -37,7 +36,6 @@ export class signUpComponent {
     if (this.userData && this.userData.length > 0) {
       let isEmail: boolean = false;
       for (let i in this.userData) {
-        console.log(i);
         if (this.userData[i].email == this.user.email) {
           alert("Already email");
           isEmail = true;

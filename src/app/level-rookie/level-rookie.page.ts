@@ -80,7 +80,6 @@ export class LevelRookiePage implements OnInit {
       )
     ).subscribe(data => {
       if(data && data.length >0){
-        console.log(data);
         var chapter_text = '';
         for (var i = 0; i < data.length; i++) {
           if (`Chapter ${val}` == data[i]["chapter"]["name"]) {

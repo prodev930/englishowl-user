@@ -21,6 +21,8 @@ export class ChapterPage implements OnInit {
   chapter_text = "";
   chapter_title = "";
   html: SafeHtml;
+  chapter_id = '';
+  user = [];
 
   constructor(private totalMark: testMark,private userInfo: userInfo,private tutorialService: TutorialService, protected _sanitizer: DomSanitizer, private globals: firevariable, public router: Router) {
     this.globals.currentChapter.subscribe(chapter => this.chapter_title = chapter);
@@ -29,7 +31,6 @@ export class ChapterPage implements OnInit {
 
   ngOnInit(): void {
     this.retrieveTutorials();
-    
   }
 
   refreshList(): void {
@@ -46,12 +47,26 @@ export class ChapterPage implements OnInit {
         )
       )
     ).subscribe(data => {
-      this.tutorials = data;
-
-      for (var i in data) {
-        this.chapter_text += data[i].chapterContent;
+      if(data && data.length > 0) {
+        this.globals.currentChapter.subscribe(chapter_id => this.chapter_id = chapter_id);
+        for(let i in data) {
+          if(this.chapter_id == data[i]["chapter"]["name"]) {
+            this.user.push(data[i]);
+          }
+        }
+        if(this.user && this.user.length > 0) {
+          for (var i in this.user) {
+            this.chapter_text += this.user[i].chapterContent;
+          }
+          this.html = this._sanitizer.bypassSecurityTrustHtml(this.chapter_text);
+        } else {
+          this.user = [];
+          this.html = this._sanitizer.bypassSecurityTrustHtml(`<p>No Data</p>`);
+        }
+      } else {
+        this.user = [];
+        this.html = this._sanitizer.bypassSecurityTrustHtml(`<p>No Data</p>`); 
       }
-      this.html = this._sanitizer.bypassSecurityTrustHtml(this.chapter_text);
     });
   }
   signout() {

@@ -65,7 +65,6 @@ export class LevelExpertPage implements OnInit {
           }
         }
       }
-      console.log(this.users);
     });
   }
 

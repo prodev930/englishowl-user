@@ -4,7 +4,8 @@ import { map } from 'rxjs/operators';
 import { Tutorial } from 'src/app/models/tutorial.model';
 import { quiztitle } from '../models/fireVariable';
 import { Router } from '@angular/router';
-import { testMark, userInfo } from '../models/fireVariable';
+import { testMark, userInfo, firevariable } from '../models/fireVariable';
+
 
 @Component({
   selector: 'app-quiz',
@@ -29,8 +30,10 @@ export class QuizPage implements OnInit {
   isSelect = false;
   defaultChoice = "";
   total_problem = 0;
+  chapter_id = "";
+  user = [];
 
-  constructor(private tutorialService: TutorialService, private quiztilte: quiztitle, public router: Router, private totalMark: testMark, private userInfo: userInfo) { }
+  constructor(private tutorialService: TutorialService, private quiztilte: quiztitle, public router: Router, private totalMark: testMark, private Global: firevariable, private userInfo: userInfo) { }
 
   ngOnInit(): void {
     this.init_gloablMark();
@@ -43,6 +46,9 @@ export class QuizPage implements OnInit {
   init_gloablMark(): void {
     this.totalMark.setMark(0);
     this.totalMark.setProblem(0);
+    this.question = '';
+    this.answer = [];
+    this.user = [];
   }
   isRight_init(): void {
     this.isMark = 0;
@@ -71,34 +77,52 @@ export class QuizPage implements OnInit {
       )
     ).subscribe(data => {
       if (data && data.length > 0) {
-        this.total_problem = data.length;
-        this.totalMark.setProblem(this.total_problem);
-        for (let i in data) {
-          var random = [];
-          for (var j = 0; j < 4; j++) {
-            var temp = Math.floor(Math.random() * 4) + 1;
-            if (random.indexOf(temp) == -1) {
-              random.push(temp);
-              if (temp == 1) {
-                this.right_array.push(j);
-              }
-            }
-            else
-              j--;
-          }
-          this.totalData[i] = data[i].question;
-          this.explanation[i] = data[i]["explanation"];
-          this.totalAnswer[data[i].question] = {
-            0: data[i][`answer${random[0]}`],
-            1: data[i][`answer${random[1]}`],
-            2: data[i][`answer${random[2]}`],
-            3: data[i][`answer${random[3]}`]
-          }
-          if(i == '0') {
-            this.question = this.totalData[0];
-            this.answer = this.totalAnswer[this.question];
+        this.Global.currentChapter.subscribe(chapter_id => this.chapter_id = chapter_id);
+        for(let i in data) {
+          if(this.chapter_id == data[i]["chapter"]["name"]) {
+            this.user.push(data[i]);
           }
         }
+        if(this.user && this.user.length > 0) {
+          this.total_problem = this.user.length;
+          this.totalMark.setProblem(this.total_problem);
+          for (let i in this.user) {
+            var random = [];
+            for (var j = 0; j < 4; j++) {
+              var temp = Math.floor(Math.random() * 4) + 1;
+              if (random.indexOf(temp) == -1) {
+                random.push(temp);
+                if (temp == 1) {
+                  this.right_array.push(j);
+                }
+              }
+              else
+                j--;
+            }
+            this.totalData[i] = this.user[i].question;
+            this.explanation[i] = this.user[i]["explanation"];
+            this.totalAnswer[this.user[i].question] = {
+              0: this.user[i][`answer${random[0]}`],
+              1: this.user[i][`answer${random[1]}`],
+              2: this.user[i][`answer${random[2]}`],
+              3: this.user[i][`answer${random[3]}`]
+            }
+            if(i == '0') {
+              this.question = this.totalData[0];
+              this.answer = this.totalAnswer[this.question];
+            }
+          }
+        } else {
+          this.totalMark.setProblem(0);
+          this.question = '';
+          this.answer = [];
+          this.user = [];
+        }
+      } else {
+        this.totalMark.setProblem(0);
+        this.question = '';
+        this.answer = [];
+        this.user = [];
       }
     });
   }

@@ -11,7 +11,7 @@
   <div class="context">
     <div class="content">
       <div class="content1">{{Quiz_title}}</div>
-      <div class="section">
+      <div *ngIf = "user && question && answer" class="section">
         <div>
           <div style="overflow: auto;">
             <div class="">

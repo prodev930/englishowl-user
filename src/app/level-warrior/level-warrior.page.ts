@@ -65,7 +65,6 @@ export class LevelWarriorPage implements OnInit {
           }
         }
       }
-      console.log(this.users);
     });
   }
 

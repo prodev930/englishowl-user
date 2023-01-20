@@ -29,8 +29,8 @@
           </div>
         </div>
       </div>
-      <div class="markDone">
-        <a [routerLink]="'/quiz'" class="routerlink">
+      <div  class="markDone">
+        <a *ngIf="user.length != 0" [routerLink]="'/quiz'" class="routerlink">
           <div class="mark">Mark As Done</div>
         </a>
       </div>

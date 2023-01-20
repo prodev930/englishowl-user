@@ -66,7 +66,6 @@ export class LevelSlayerPage implements OnInit {
           }
         }
       }
-      console.log(this.users);
     });
   }
 
