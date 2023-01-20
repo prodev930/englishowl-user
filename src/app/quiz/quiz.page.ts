@@ -110,7 +110,7 @@ export class QuizPage implements OnInit {
     }
   }
 
-  confirm(evt): void {
+  confirm(): void {
     this.defaultChoice = '';
     if (!this.isConfirm && this.isSelect) {
       this.isConfirm = true;

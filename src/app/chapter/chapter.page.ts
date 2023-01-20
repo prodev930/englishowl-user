@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { TutorialService } from 'src/app/services/tutorial.service';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { Tutorial } from 'src/app/models/tutorial.model';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
@@ -22,7 +23,7 @@ export class ChapterPage implements OnInit {
   chapter_title = "";
   html: SafeHtml;
 
-  constructor(private tutorialService: TutorialService, protected _sanitizer: DomSanitizer, private globals: firevariable) { 
+  constructor(private tutorialService: TutorialService, protected _sanitizer: DomSanitizer, private globals: firevariable, public router: Router) {
     this.globals.currentChapter.subscribe(chapter => this.chapter_title = chapter);
     this.globals.currentChapterContent.subscribe(chapterContent => this.html = this._sanitizer.bypassSecurityTrustHtml(chapterContent));
   }
@@ -30,7 +31,7 @@ export class ChapterPage implements OnInit {
   ngOnInit(): void {
     this.retrieveTutorials();
   }
-  
+
   refreshList(): void {
     this.currentTutorial = undefined;
     this.currentIndex = -1;
@@ -53,8 +54,11 @@ export class ChapterPage implements OnInit {
     //   this.html = this._sanitizer.bypassSecurityTrustHtml(this.chapter_text);
     //   console.log(this.html);
     // });
-  }
 
+  }
+  signout() {
+    this.router.navigate(['signin']);
+  }
   setActiveTutorial(tutorial: Tutorial, index: number): void {
     this.currentTutorial = tutorial;
     this.currentIndex = index;

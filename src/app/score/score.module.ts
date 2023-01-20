@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ScorePageRoutingModule } from './score-routing.module';
-
+import { NgApexchartsModule } from "ng-apexcharts";
 import { ScorePage } from './score.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { ScorePage } from './score.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ScorePageRoutingModule
+    ScorePageRoutingModule,
+    NgApexchartsModule
   ],
   declarations: [ScorePage]
 })
