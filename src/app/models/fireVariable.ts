@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 @Injectable()
 export class firevariable {
-   private Chapter = new BehaviorSubject<string>("Chapter 1");
+    private Chapter = new BehaviorSubject<string>("Chapter 1");
     currentChapter = this.Chapter.asObservable();
     private ChapterContent = new BehaviorSubject<string>("");
     currentChapterContent = this.ChapterContent.asObservable();
     constructor() { }
-    setChapter(Chapter: string, ChapterContent:string) {
+    setChapter(Chapter: string, ChapterContent: string) {
         this.Chapter.next(Chapter);
         this.ChapterContent.next(ChapterContent);
     }
@@ -15,10 +15,16 @@ export class firevariable {
 
 export class userInfo {
     private email = new BehaviorSubject<string>("");
+    private chapter_status = new BehaviorSubject<number>(1);
     currentEmail = this.email.asObservable();
+    currentChapter_status = this.chapter_status.asObservable();
+
     constructor() { }
     setEmail(Email: string) {
         this.email.next(Email);
+    }
+    setchapter_status(Chapter_status: number) {
+        this.chapter_status.next(Chapter_status);
     }
 }
 

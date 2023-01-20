@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../shared/authentication-service';
 import { map } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
-import { User } from '../models/user.model';
 import { userInfo } from '../models/fireVariable';
 
 @Component({
@@ -20,13 +19,9 @@ export class SignInPage implements OnInit {
     private globals: userInfo,
   ) { }
 
-  users?: User[];
-
-
   ngOnInit() { }
 
   logIn(email, password): void {
-    console.log(email.value);
     this.userService.getAll().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
@@ -34,15 +29,14 @@ export class SignInPage implements OnInit {
         )
       )
     ).subscribe(data => {
-      this.users = data;
       for (var i = 0; i < data.length; i++) {
         if (email.value == data[i].email) {
-          alert("Success");
           this.globals.setEmail(email.value);
+          this.globals.setchapter_status(data[i].chapter_status);
           this.router.navigate(['level']);
         }
-        else{
-          alert("False");
+        else {
+          // alert("False");
         }
       }
     });

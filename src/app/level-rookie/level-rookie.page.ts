@@ -65,7 +65,6 @@ export class LevelRookiePage implements OnInit {
           }
         }
       }
-      console.log(this.users);
     });
   }
 
@@ -80,14 +79,17 @@ export class LevelRookiePage implements OnInit {
         )
       )
     ).subscribe(data => {
-      var chapter_text = '';
-      for (var i = 0; i < data.length; i++) {
-        if (`Chapter ${val}` == JSON.parse(JSON.stringify(data[i].chapter)).name) {
-          chapter_text += data[i].chapterContent;
-          this.globals.setChapter(JSON.parse(JSON.stringify(data[i].chapter)).name, chapter_text);
+      if(data && data.length >0){
+        console.log(data);
+        var chapter_text = '';
+        for (var i = 0; i < data.length; i++) {
+          if (`Chapter ${val}` == data[i]["chapter"]["name"]) {
+            chapter_text += data[i].chapterContent;
+            this.globals.setChapter(data[i]["chapter"]["name"], chapter_text);
+          }
         }
+        this.tutorials = data;
       }
-      this.tutorials = data;
     });
   }
 

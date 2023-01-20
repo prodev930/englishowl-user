@@ -117,6 +117,8 @@ export class QuizPage implements OnInit {
         this.count = 0;
         this.router.navigate(['score']);
       }
+    } else if(!this.isConfirm && this.isSelect) {
+      this.isSelect = false;
     }
     this.defaultChoice = "";
 
@@ -155,6 +157,7 @@ export class QuizPage implements OnInit {
     this.defaultChoice = v;
   }
   signout() {
+    this.totalMark.setMark(0);
     this.router.navigate(['signin']);
   }
 }

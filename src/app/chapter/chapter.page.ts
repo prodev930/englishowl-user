@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Tutorial } from 'src/app/models/tutorial.model';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { testMark } from '../models/fireVariable';
 
 import { firevariable } from '../models/fireVariable';
 
@@ -23,13 +24,14 @@ export class ChapterPage implements OnInit {
   chapter_title = "";
   html: SafeHtml;
 
-  constructor(private tutorialService: TutorialService, protected _sanitizer: DomSanitizer, private globals: firevariable, public router: Router) {
+  constructor(private totalMark: testMark,private tutorialService: TutorialService, protected _sanitizer: DomSanitizer, private globals: firevariable, public router: Router) {
     this.globals.currentChapter.subscribe(chapter => this.chapter_title = chapter);
     this.globals.currentChapterContent.subscribe(chapterContent => this.html = this._sanitizer.bypassSecurityTrustHtml(chapterContent));
   }
 
   ngOnInit(): void {
     this.retrieveTutorials();
+    
   }
 
   refreshList(): void {
@@ -55,6 +57,7 @@ export class ChapterPage implements OnInit {
     });
   }
   signout() {
+    this.totalMark.setMark(0);
     this.router.navigate(['signin']);
   }
   setActiveTutorial(tutorial: Tutorial, index: number): void {
